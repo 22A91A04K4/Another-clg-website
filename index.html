@@ -69,7 +69,7 @@ body {
     background: #575757;
 }
 
-/* Dropdown Levels */
+/* Dropdown */
 .dropdown {
     display: none;
     background: #444;
@@ -80,7 +80,7 @@ body {
     font-size: 14px;
 }
 
-/* Sub Dropdown (2nd level) */
+/* Sub Dropdown */
 .sub-dropdown {
     display: none;
     background: #555;
@@ -90,33 +90,47 @@ body {
     padding-left: 50px;
     font-size: 13px;
 }
+
+/* IMAGE DISPLAY */
+.image-box {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    background: white;
+}
+
+.image-box img {
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+}
 </style>
 
 </head>
 
 <body>
 
+<!-- HERO SECTION -->
 <div class="hero">
-
     <div class="title">Sandip University</div>
 
-    <!-- Menu Icon -->
     <div class="menu-icon" onclick="toggleMenu()">
         <div></div>
         <div></div>
         <div></div>
     </div>
-
 </div>
 
-<!-- Side Menu -->
+<!-- IMAGE DISPLAY AREA -->
+<div id="displayArea" class="image-box"></div>
+
+<!-- SIDE MENU -->
 <div id="menu" class="side-menu">
 
     <!-- Courses -->
     <a onclick="toggleDropdown('coursesMenu')">Courses ▼</a>
     <div id="coursesMenu" class="dropdown">
 
-        <!-- B.Tech -->
         <a onclick="toggleSubDropdown('btechMenu')">B.Tech ▶</a>
         <div id="btechMenu" class="sub-dropdown">
             <a href="#">CSE</a>
@@ -129,22 +143,20 @@ body {
             <a href="#">CIVIL</a>
         </div>
 
-        <!-- MBA -->
         <a onclick="toggleSubDropdown('mbaMenu')">MBA ▶</a>
         <div id="mbaMenu" class="sub-dropdown">
             <a href="#">Finance</a>
             <a href="#">Marketing</a>
-            <a href="#">Human Resources</a>
+            <a href="#">HR</a>
             <a href="#">Business Analytics</a>
         </div>
 
-        <!-- B.Sc -->
         <a onclick="toggleSubDropdown('bscMenu')">B.Sc ▶</a>
         <div id="bscMenu" class="sub-dropdown">
             <a href="#">Physics</a>
             <a href="#">Chemistry</a>
-            <a href="#">Mathematics</a>
-            <a href="#">Computer Science</a>
+            <a href="#">Maths</a>
+            <a href="#">CS</a>
         </div>
 
     </div>
@@ -152,15 +164,13 @@ body {
     <!-- Library -->
     <a onclick="toggleDropdown('libraryMenu')">Library ▼</a>
     <div id="libraryMenu" class="dropdown">
-        <a href="#">Books</a>
-        <a href="#">Digital Library</a>
+        <a onclick="showLibrary()">View Library Photos</a>
     </div>
 
     <!-- Playground -->
     <a onclick="toggleDropdown('playgroundMenu')">Playground ▼</a>
     <div id="playgroundMenu" class="dropdown">
-        <a href="#">Cricket Ground</a>
-        <a href="#">Football Ground</a>
+        <a onclick="showCricket()">Play Ground</a>
     </div>
 
     <!-- Fees -->
@@ -173,8 +183,9 @@ body {
     <!-- Hostels -->
     <a onclick="toggleDropdown('hostelsMenu')">Hostels ▼</a>
     <div id="hostelsMenu" class="dropdown">
-        <a href="#">Boys Hostel</a>
-        <a href="#">Girls Hostel</a>
+        <a onclick="showGirlsHostels()">Girls Hostel</a>
+        <a onclick="showBoysHostels()">Boys Hostel</a>
+        <a onclick="showMess()">Mess</a>
     </div>
 
 </div>
@@ -186,9 +197,8 @@ function toggleMenu() {
 
 function toggleDropdown(id) {
     let dropdown = document.getElementById(id);
-
-    // Close other dropdowns
     let all = document.querySelectorAll('.dropdown');
+
     all.forEach(d => {
         if (d !== dropdown) d.style.display = "none";
     });
@@ -198,14 +208,66 @@ function toggleDropdown(id) {
 
 function toggleSubDropdown(id) {
     let sub = document.getElementById(id);
-
-    // Close other sub dropdowns
     let all = document.querySelectorAll('.sub-dropdown');
+
     all.forEach(s => {
         if (s !== sub) s.style.display = "none";
     });
 
     sub.style.display = (sub.style.display === "block") ? "none" : "block";
+}
+
+/* IMAGE FUNCTIONS */
+
+function showCricket() {
+    let box = document.getElementById("displayArea");
+    box.style.display = "block";
+    box.innerHTML = `
+        <h2>Ground</h2>
+        <img src="play1.jpeg">
+        <img src="play2.jpg">
+    `;
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+function showGirlsHostels() {
+    let box = document.getElementById("displayArea");
+    box.style.display = "block";
+    box.innerHTML = `
+        <h2>Girls Hostels </h2>
+        <img src="girls hostel.png">
+    `;
+    window.scrollTo(0, document.body.scrollHeight);
+}
+function showBoysHostels() {
+    let box = document.getElementById("displayArea");
+    box.style.display = "block";
+    box.innerHTML = `
+        <h2>Boys Hostels </h2>
+        <img src="hstl.jpg">
+    `;
+    window.scrollTo(0, document.body.scrollHeight);
+}
+function showMess() {
+    let box = document.getElementById("displayArea");
+    box.style.display = "block";
+    box.innerHTML = `
+        <h2>Mess </h2>
+        <img src="mess.jpeg">
+    `;
+    window.scrollTo(0, document.body.scrollHeight);
+}
+        
+
+function showLibrary() {
+    let box = document.getElementById("displayArea");
+    box.style.display = "block";
+    box.innerHTML = `
+        <h2>Library</h2>
+        <img src="lib.jpg">
+        <img src="lib1.webp">
+    `;
+    window.scrollTo(0, document.body.scrollHeight);
 }
 </script>
 
